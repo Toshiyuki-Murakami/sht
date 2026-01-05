@@ -3,6 +3,9 @@ extends chase_controller
 ## exp取得距離
 @export var player_get_distance:float = 8.0
 
+
+
+
 ## ターゲットがあれば追跡する設定
 func check_target():
 	if is_chase:

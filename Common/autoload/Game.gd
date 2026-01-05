@@ -13,6 +13,10 @@ var poolbase:pool_base
 ## === 
 var marker:target_marker
 
+## ===== 経験値
+var xp:int = 0
+var next_xp:int = 100
+
 func get_spawn_data():
 	pass
 
@@ -47,4 +51,8 @@ func delay(_time:float, _callable:Callable):
 	get_tree().create_timer(_time).timeout.connect(func():
 		_callable.call()
 	)
-	
+
+
+func add_xp(_add:int):
+	xp += _add
+	Signals.add_xp.emit(xp, next_xp)

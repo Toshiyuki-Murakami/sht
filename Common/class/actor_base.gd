@@ -17,7 +17,10 @@ signal add_effect(_name:String)
 ## 移動速度
 @export var speed:float = 320.0
 
+## HP
 @export var hp:float = 1
+## 最大HP
+@export var max_hp:int = 1
 
 @export var death_effect:String = 'effect_circle'
 
@@ -53,7 +56,8 @@ func deactivate():
 	change_deactivate.emit()
 
 func receive_hit(_damage:float):
-	if !calc_hp(_damage):
+	var ret:bool = calc_hp(_damage)
+	if !ret:
 		deactivate()
 		effect(death_effect)
 		return false

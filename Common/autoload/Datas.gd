@@ -7,6 +7,13 @@ var spawns:Array = [
 	## グループパターンごとにわける
 	[
 		{
+			'keyname': 'enemy_cross',
+			'type': 'spit',
+			'count': 30,
+			'angle': 45.0,
+			'delay': 0.025,
+		},
+		{
 			'keyname': 'enemy_triangle01',
 			'type': 'set',
 			'count': 4,

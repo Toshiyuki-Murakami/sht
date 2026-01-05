@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7pwf4nhk5j83"]
+
+[ext_resource type="Script" path="res://Scene/options/spawns/spit.gd" id="1_skyh0"]
+
+[node name="spit" type="Node2D"]
+script = ExtResource("1_skyh0")
+spawn_name = "spit"

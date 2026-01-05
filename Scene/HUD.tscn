@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://daf6xg3wcidab"]
+[gd_scene load_steps=6 format=3 uid="uid://daf6xg3wcidab"]
 
 [ext_resource type="PackedScene" uid="uid://cd114wb465kky" path="res://Scene/options/HUD_Pool.tscn" id="1_kbgt0"]
 [ext_resource type="PackedScene" uid="uid://djjmmk13fi6wo" path="res://Scene/options/HUD_FPS.tscn" id="2_b0ssp"]
+[ext_resource type="PackedScene" uid="uid://da516vuhcvi52" path="res://Scene/options/HUD_exp.tscn" id="3_wbibf"]
+[ext_resource type="PackedScene" uid="uid://duusisecrpj2o" path="res://Scene/options/HUD_HP.tscn" id="4_837gv"]
+[ext_resource type="PackedScene" uid="uid://c6eaoqm722vwf" path="res://Scene/options/HUD_ComboCounter.tscn" id="5_cgox6"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -29,4 +32,39 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -105.0
 offset_right = -40.0
+grow_horizontal = 0
+
+[node name="HUD_EXP" parent="base" instance=ExtResource("3_wbibf")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -40.0
+offset_right = 38.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HUD_HP" parent="base" instance=ExtResource("4_837gv")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 77.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="HUD_ComboCounter" parent="base" instance=ExtResource("5_cgox6")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -84.0
+offset_top = 42.0
+offset_right = 0.0
+offset_bottom = 82.0
 grow_horizontal = 0

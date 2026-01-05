@@ -13,7 +13,7 @@ func _ready():
 	
 	Signals.hit_player.connect(_on_hit_player)
 
-func _on_hit_player():
+func _on_hit_player(_hp:int, _damage:int):
 	add_shake(0.8)
 
 func add_shake(amount: float):

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6eaoqm722vwf"]
+
+[ext_resource type="Script" path="res://Scene/options/HUD_ComboCounter.gd" id="1_ijh2e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vwwol"]
+font_size = 32
+
+[node name="HUD_ComboCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ijh2e")
+
+[node name="ComboLine" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="combo_label" type="Label" parent="ComboLine"]
+layout_mode = 2
+text = "x1"
+label_settings = SubResource("LabelSettings_vwwol")

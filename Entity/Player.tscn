@@ -16,6 +16,7 @@ size = Vector2(32, 32)
 [node name="Player" type="Node2D"]
 script = ExtResource("1_20725")
 hp = 10.0
+max_hp = 10
 death_effect = "effect_playerdeath"
 
 [node name="InputController" parent="." instance=ExtResource("1_lw4id")]

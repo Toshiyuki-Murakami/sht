@@ -18,6 +18,7 @@ func _process(_delta: float) -> void:
 func receive_hit(_damage:float):
 	var ret:bool = super(_damage)
 	if ret:
-		Signals.hit_player.emit()
+		Signals.hit_player.emit(hp, _damage)
+		Signals.change_hp.emit(hp, max_hp)
 	
 	return ret

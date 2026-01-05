@@ -6,6 +6,7 @@ var Resources:Dictionary = {
 	'enemy_triangle01': preload("res://Entity/EnemyTriangle01.tscn").instantiate(),
 	'enemy_square128': preload("res://Entity/EnemySquare128.tscn").instantiate(),
 	'enemy_circle01': preload("res://Entity/EnemyCircle01.tscn").instantiate(),
+	'enemy_cross': preload("res://Entity/EnemyCross.tscn").instantiate(),
 	
 	## bullet
 	'main_bullet': preload("res://Entity/bullet/MainBullrt.tscn").instantiate(),

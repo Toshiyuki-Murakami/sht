@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://co8siajjum86w"]
+[gd_scene load_steps=14 format=3 uid="uid://co8siajjum86w"]
 
 [ext_resource type="Script" path="res://Stage.gd" id="1_6v6m1"]
 [ext_resource type="Shader" path="res://stage_star.gdshader" id="2_6onc7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://vrlhutg545qs" path="res://Scene/options/SpawnController.tscn" id="7_w6xsc"]
 [ext_resource type="PackedScene" uid="uid://daf6xg3wcidab" path="res://Scene/HUD.tscn" id="8_5mm12"]
 [ext_resource type="PackedScene" uid="uid://dabxladutxocj" path="res://Scene/options/spawns/normal.tscn" id="8_l4nrg"]
+[ext_resource type="PackedScene" uid="uid://c7pwf4nhk5j83" path="res://Scene/options/spawns/spit.tscn" id="10_xbe6d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1uby"]
 shader = ExtResource("2_6onc7")
@@ -56,5 +57,7 @@ marker = NodePath("../../TargetMarker")
 
 [node name="set" parent="SpawnController" instance=ExtResource("7_0fwxp")]
 spawn_name = "set"
+
+[node name="spit" parent="SpawnController" instance=ExtResource("10_xbe6d")]
 
 [node name="HUD" parent="." instance=ExtResource("8_5mm12")]

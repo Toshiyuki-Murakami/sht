@@ -2,6 +2,10 @@ extends Node2D
 class_name pool_base
 
 @export var pool_define:Dictionary = {
+	'enemy_cross':{
+		'key_name': 'enemy_cross',
+		'size': 100,
+	},
 	'enemy_square128':{
 		'key_name': 'enemy_square128',
 		'size': 10,
@@ -65,6 +69,7 @@ func init_pool():
 		## 指定サイズ分作成
 		for i in range(pool_define[_pool_key].size):
 			var _node:entity_base = Scenes.get_duplicate(pool_define[_pool_key].key_name)
+			_node.keyname = pool_define[_pool_key].key_name
 			_node.poolbase = self
 			_node.poolkey = _pool_key
 			add_child(_node)

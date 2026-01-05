@@ -21,5 +21,7 @@ func deactivate():
 	super()
 	## 移動停止
 	velocity = Vector2.ZERO
+	if hp == 0:
+		Signals.kill_enemy.emit(keyname)
 
 	

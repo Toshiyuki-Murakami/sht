@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 	timer += _delta
 	if spawn_span <= timer:
 		reset_timer()
-		var dat:Dictionary = Datas.spawns[0][1]
+		var dat:Dictionary = Datas.spawns[0][0]
 		spawn(dat)
 	
 func _on_set_spawn(_data:Dictionary):

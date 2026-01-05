@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8jcyw0cfvbx6"]
+
+[ext_resource type="Script" path="res://Entity/EnemyCross.gd" id="1_2usko"]
+[ext_resource type="PackedScene" uid="uid://d2e5ae7c8huly" path="res://Entity/Animetion/Anime_Cross.tscn" id="2_50u65"]
+[ext_resource type="PackedScene" uid="uid://c645btwynw72h" path="res://Entity/Options/HitBox.tscn" id="3_goebw"]
+[ext_resource type="PackedScene" uid="uid://bkhm6i521vcuw" path="res://Entity/Options/HitBodySender.tscn" id="4_b14vh"]
+[ext_resource type="PackedScene" uid="uid://cfumwk2ml3vk3" path="res://Entity/Options/MoveController.tscn" id="6_8i1wg"]
+[ext_resource type="PackedScene" uid="uid://cvc18aw7btj2b" path="res://Entity/Options/ChaseController.tscn" id="7_3mphu"]
+
+[node name="EnemyCross" type="Node2D"]
+script = ExtResource("1_2usko")
+speed = 160.0
+
+[node name="Anime_Square" parent="." instance=ExtResource("2_50u65")]
+
+[node name="HitBox" parent="Anime_Square" instance=ExtResource("3_goebw")]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Anime_Square/HitBox"]
+polygon = PackedVector2Array(-4, -14, -4, -4, -14, -4, -14, 4, -4, 4, -4, 14, 4, 14, 4, 4, 14, 4, 14, -4, 4, -4, 4, -14)
+
+[node name="HitBodySender" parent="Anime_Square" instance=ExtResource("4_b14vh")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Anime_Square/HitBodySender"]
+polygon = PackedVector2Array(-4, -14, -4, -4, -14, -4, -14, 4, -4, 4, -4, 14, 4, 14, 4, 4, 14, 4, 14, -4, 4, -4, 4, -14)
+
+[node name="MoveController" parent="." instance=ExtResource("6_8i1wg")]
+
+[node name="ChaseController" parent="." instance=ExtResource("7_3mphu")]
+target_in_radius = 10000.0

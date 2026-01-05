@@ -6,6 +6,8 @@ class_name entity_base
 ## 親変数設定時の関数名
 @export var init_entity:String = 'init_entity'
 
+var keyname:String = ''
+
 var active:bool = false
 ## pool処理用設定
 var poolbase:pool_base
