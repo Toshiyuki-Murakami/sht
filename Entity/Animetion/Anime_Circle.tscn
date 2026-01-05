@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://buq6moxe55pts"]
+
+[ext_resource type="Script" path="res://Entity/Animetion/Anime_Circle.gd" id="1_78rjn"]
+[ext_resource type="Texture2D" uid="uid://c1c15e3bh14o7" path="res://asset/circle_line.png" id="2_382fo"]
+
+[sub_resource type="Animation" id="Animation_6f8sn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("image:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.5, 0, 1.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_awai1"]
+resource_name = "action"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_3bdh6"]
+resource_name = "create"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("image:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.5, 0, 1.5, 0), Color(1.5, 0, 1.5, 0.5), Color(1.5, 0, 1.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjs7v"]
+_data = {
+"RESET": SubResource("Animation_6f8sn"),
+"action": SubResource("Animation_awai1"),
+"create": SubResource("Animation_3bdh6")
+}
+
+[node name="Anime_Circle" type="Node2D" node_paths=PackedStringArray("image_base")]
+script = ExtResource("1_78rjn")
+image_base = NodePath("image")
+
+[node name="image" type="Sprite2D" parent="."]
+modulate = Color(1.5, 0, 1.5, 1)
+texture = ExtResource("2_382fo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vjs7v")
+}

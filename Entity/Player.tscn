@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://ceyc4bi5wldg0"]
+
+[ext_resource type="Script" path="res://Entity/Player.gd" id="1_20725"]
+[ext_resource type="PackedScene" uid="uid://bfv1l5kxanl1x" path="res://Entity/Options/InputController.tscn" id="1_lw4id"]
+[ext_resource type="PackedScene" uid="uid://cfumwk2ml3vk3" path="res://Entity/Options/MoveController.tscn" id="2_e7kex"]
+[ext_resource type="PackedScene" uid="uid://vrwai0a2luc7" path="res://Entity/Animetion/Anime_Square.tscn" id="4_jrnut"]
+[ext_resource type="PackedScene" uid="uid://c645btwynw72h" path="res://Entity/Options/HitBox.tscn" id="5_xkbsa"]
+[ext_resource type="PackedScene" uid="uid://cyyt77pvlq5p6" path="res://Entity/Options/FireController.tscn" id="6_8v0xp"]
+[ext_resource type="PackedScene" uid="uid://qj6efmm5fvff" path="res://Entity/Options/ShotPoints.tscn" id="6_gj85q"]
+[ext_resource type="PackedScene" uid="uid://bdc0g342k4up2" path="res://Entity/Options/WeaponTrigger.tscn" id="7_mda3a"]
+[ext_resource type="PackedScene" uid="uid://dr2gb58vnnmii" path="res://Entity/Options/EXP_Activater.tscn" id="9_1fra6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvnos"]
+size = Vector2(32, 32)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_20725")
+hp = 10.0
+death_effect = "effect_playerdeath"
+
+[node name="InputController" parent="." instance=ExtResource("1_lw4id")]
+
+[node name="MoveController" parent="." instance=ExtResource("2_e7kex")]
+
+[node name="ShotPoints" parent="." instance=ExtResource("6_gj85q")]
+to_target_face = true
+
+[node name="Anime_Square" parent="." instance=ExtResource("4_jrnut")]
+
+[node name="HitBox" parent="Anime_Square" instance=ExtResource("5_xkbsa")]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anime_Square/HitBox"]
+shape = SubResource("RectangleShape2D_vvnos")
+
+[node name="FireController" parent="." node_paths=PackedStringArray("triggerbase") instance=ExtResource("6_8v0xp")]
+triggerbase = NodePath("../InputController")
+
+[node name="WeaponTrigger" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("7_mda3a")]
+shotpoints = NodePath("../../ShotPoints")
+cooltime = 0.1
+multi = 3
+
+[node name="EXP_Activater" parent="." instance=ExtResource("9_1fra6")]

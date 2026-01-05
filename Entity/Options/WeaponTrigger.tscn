@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdc0g342k4up2"]
+
+[ext_resource type="Script" path="res://Entity/Options/WeaponTrigger.gd" id="1_uslgo"]
+
+[node name="WeaponTrigger" type="Node2D"]
+script = ExtResource("1_uslgo")

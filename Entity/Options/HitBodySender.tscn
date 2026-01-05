@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkhm6i521vcuw"]
+
+[ext_resource type="Script" path="res://Entity/Options/HitBodySender.gd" id="1_imp6w"]
+
+[node name="HitBodySender" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_imp6w")
+continuous_time = 0.1

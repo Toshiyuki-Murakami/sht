@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dltvjwt28c1lv"]
+
+[ext_resource type="Script" path="res://Entity/bullet/MainBullrt.gd" id="1_l3pmf"]
+[ext_resource type="PackedScene" uid="uid://cww5j0cca12k6" path="res://Entity/Options/HitSender.tscn" id="3_3me5l"]
+[ext_resource type="PackedScene" uid="uid://mto0mk6poxdw" path="res://Entity/Animetion/Bullet/Anime_MainBullet01.tscn" id="4_cewbw"]
+[ext_resource type="PackedScene" uid="uid://cfumwk2ml3vk3" path="res://Entity/Options/MoveController.tscn" id="4_y7jfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy6sm"]
+size = Vector2(15, 9)
+
+[node name="MainBullrt" type="Node2D" node_paths=PackedStringArray("image_base")]
+script = ExtResource("1_l3pmf")
+image_base = NodePath("Anime_Bullet01")
+to_face = true
+speed = 1024.0
+
+[node name="HitSender" parent="." instance=ExtResource("3_3me5l")]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hy6sm")
+
+[node name="MoveController" parent="." instance=ExtResource("4_y7jfp")]
+
+[node name="Anime_Bullet01" parent="." instance=ExtResource("4_cewbw")]

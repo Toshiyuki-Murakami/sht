@@ -1,0 +1,1 @@
+extends spawn_base

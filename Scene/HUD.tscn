@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://daf6xg3wcidab"]
+
+[ext_resource type="PackedScene" uid="uid://cd114wb465kky" path="res://Scene/options/HUD_Pool.tscn" id="1_kbgt0"]
+[ext_resource type="PackedScene" uid="uid://djjmmk13fi6wo" path="res://Scene/options/HUD_FPS.tscn" id="2_b0ssp"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="base" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD_Pool" parent="base" instance=ExtResource("1_kbgt0")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.5
+offset_right = 88.5
+grow_horizontal = 2
+
+[node name="HUD_FPS" parent="base" instance=ExtResource("2_b0ssp")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -105.0
+offset_right = -40.0
+grow_horizontal = 0

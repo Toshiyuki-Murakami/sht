@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://qj6efmm5fvff"]
+
+[ext_resource type="Script" path="res://Entity/Options/ShotPoints.gd" id="1_neyxk"]
+[ext_resource type="Texture2D" uid="uid://ca6u7wshdw1c" path="res://asset/shot_points.png" id="2_v5jbx"]
+
+[node name="ShotPoints" type="Node2D"]
+script = ExtResource("1_neyxk")
+
+[node name="points_list" type="Node2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="points0" type="Sprite2D" parent="points_list"]
+texture = ExtResource("2_v5jbx")
+
+[node name="points1" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 6)
+texture = ExtResource("2_v5jbx")
+
+[node name="points2" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 12)
+texture = ExtResource("2_v5jbx")
+
+[node name="points3" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 18)
+texture = ExtResource("2_v5jbx")
+
+[node name="points4" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 24)
+texture = ExtResource("2_v5jbx")

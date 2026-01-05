@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn6v7n8wrfep4"]
+
+[ext_resource type="Script" path="res://Entity/Options/DropController.gd" id="1_hbqne"]
+
+[node name="DropController" type="Node2D"]
+script = ExtResource("1_hbqne")

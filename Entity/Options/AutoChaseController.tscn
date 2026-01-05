@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbevmrtm0feqf"]
+
+[ext_resource type="Script" path="res://Entity/Options/AutoChaseController.gd" id="1_ehyr2"]
+
+[node name="AutoChaseController" type="Node2D"]
+script = ExtResource("1_ehyr2")

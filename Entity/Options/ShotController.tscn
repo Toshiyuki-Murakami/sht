@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbibfgbot7o7x"]
+
+[ext_resource type="Script" path="res://Entity/Options/ShotCcontroller.gd" id="1_87f3i"]
+
+[node name="ShotController" type="Node2D"]
+script = ExtResource("1_87f3i")

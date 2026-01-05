@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcjisi382v77b"]
+
+[ext_resource type="Texture2D" uid="uid://dls6xln0jiym2" path="res://asset/box_line.png" id="1_5v4io"]
+[ext_resource type="Script" path="res://Entity/Animetion/square_area.gd" id="1_7nmnw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsoe6"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_6f8sn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_awai1"]
+resource_name = "action"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjs7v"]
+_data = {
+"RESET": SubResource("Animation_6f8sn"),
+"action": SubResource("Animation_awai1")
+}
+
+[node name="square_area" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_7nmnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bsoe6")
+
+[node name="image" type="Sprite2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+texture = ExtResource("1_5v4io")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vjs7v")
+}

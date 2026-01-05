@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=3 uid="uid://co8siajjum86w"]
+
+[ext_resource type="Script" path="res://Stage.gd" id="1_6v6m1"]
+[ext_resource type="Shader" path="res://stage_star.gdshader" id="2_6onc7"]
+[ext_resource type="PackedScene" uid="uid://ceyc4bi5wldg0" path="res://Entity/Player.tscn" id="2_han3a"]
+[ext_resource type="PackedScene" uid="uid://dtixefuhc4tsd" path="res://Scene/options/Main_Camera.tscn" id="4_uifhw"]
+[ext_resource type="PackedScene" uid="uid://f6w3fnbjtkey" path="res://Entity/Options/PoolController.tscn" id="5_eck0q"]
+[ext_resource type="PackedScene" uid="uid://ccdoluqc3tsv1" path="res://Entity/TargetMarker.tscn" id="6_gr45d"]
+[ext_resource type="PackedScene" uid="uid://c3p4bc8ytyoyh" path="res://Scene/options/spawns/set.tscn" id="7_0fwxp"]
+[ext_resource type="PackedScene" uid="uid://vrlhutg545qs" path="res://Scene/options/SpawnController.tscn" id="7_w6xsc"]
+[ext_resource type="PackedScene" uid="uid://daf6xg3wcidab" path="res://Scene/HUD.tscn" id="8_5mm12"]
+[ext_resource type="PackedScene" uid="uid://dabxladutxocj" path="res://Scene/options/spawns/normal.tscn" id="8_l4nrg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1uby"]
+shader = ExtResource("2_6onc7")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(0.02, 0.01)
+
+[sub_resource type="Environment" id="Environment_knhfg"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 1.5
+glow_bloom = 0.1
+glow_blend_mode = 0
+
+[node name="Stage" type="Node2D"]
+position = Vector2(123, 130)
+script = ExtResource("1_6v6m1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_h1uby")
+offset_left = -121.0
+offset_top = -125.0
+offset_right = 1799.0
+offset_bottom = 1795.0
+color = Color(0, 0, 0, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_knhfg")
+
+[node name="entity" type="Node2D" parent="."]
+
+[node name="Player" parent="entity" node_paths=PackedStringArray("marker") instance=ExtResource("2_han3a")]
+marker = NodePath("../../TargetMarker")
+
+[node name="MainCamera" parent="entity/Player" instance=ExtResource("4_uifhw")]
+
+[node name="PoolController" parent="." instance=ExtResource("5_eck0q")]
+
+[node name="TargetMarker" parent="." instance=ExtResource("6_gr45d")]
+
+[node name="SpawnController" parent="." instance=ExtResource("7_w6xsc")]
+
+[node name="normal" parent="SpawnController" instance=ExtResource("8_l4nrg")]
+
+[node name="set" parent="SpawnController" instance=ExtResource("7_0fwxp")]
+spawn_name = "set"
+
+[node name="HUD" parent="." instance=ExtResource("8_5mm12")]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8h0l2w2hsper"]
+
+[ext_resource type="Script" path="res://Entity/etc/EXP_Ball.gd" id="1_e2vl3"]
+[ext_resource type="PackedScene" uid="uid://bpejune8ancvf" path="res://Entity/Animetion/Anime_EXP_Ball.tscn" id="2_dxdn2"]
+[ext_resource type="PackedScene" uid="uid://c645btwynw72h" path="res://Entity/Options/HitBox.tscn" id="3_tyylk"]
+[ext_resource type="PackedScene" uid="uid://dbevmrtm0feqf" path="res://Entity/Options/AutoChaseController.tscn" id="4_bcqak"]
+[ext_resource type="PackedScene" uid="uid://cfumwk2ml3vk3" path="res://Entity/Options/MoveController.tscn" id="5_hyylv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gr3fl"]
+radius = 8.06226
+
+[node name="EXP_Ball" type="Node2D" node_paths=PackedStringArray("anime")]
+script = ExtResource("1_e2vl3")
+anime = NodePath("Anime_EXP_Ball")
+speed = 450.0
+
+[node name="Anime_EXP_Ball" parent="." instance=ExtResource("2_dxdn2")]
+
+[node name="HitBox" parent="Anime_EXP_Ball" instance=ExtResource("3_tyylk")]
+collision_layer = 256
+collision_mask = 512
+death_effect = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anime_EXP_Ball/HitBox"]
+shape = SubResource("CircleShape2D_gr3fl")
+
+[node name="AutoChaseController" parent="." instance=ExtResource("4_bcqak")]
+player_get_distance = 32.0
+turn_speed = 15.0
+
+[node name="MoveController" parent="." instance=ExtResource("5_hyylv")]

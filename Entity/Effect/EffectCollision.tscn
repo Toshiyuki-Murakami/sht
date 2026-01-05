@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbtmmft3tacsk"]
+
+[ext_resource type="Script" path="res://Entity/Effect/Effect_Collision.gd" id="1_7x71t"]
+[ext_resource type="Texture2D" uid="uid://di6q2d0j2d66m" path="res://asset/effect/debris.png" id="2_yr0np"]
+
+[sub_resource type="Curve" id="Curve_5l6g0"]
+_data = [Vector2(0.123711, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_japjr"]
+curve = SubResource("Curve_5l6g0")
+
+[sub_resource type="Curve" id="Curve_w8ld1"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ufxru"]
+curve = SubResource("Curve_w8ld1")
+
+[sub_resource type="Curve" id="Curve_ndr8v"]
+_data = [Vector2(0.262887, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rnbse"]
+_data = [Vector2(0.262887, 1), 0.0, 0.0, 0, 0, Vector2(0.670103, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_07kk3"]
+curve_x = SubResource("Curve_ndr8v")
+curve_y = SubResource("Curve_rnbse")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_arntw"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+emission_shape = 2
+emission_sphere_radius = 0.01
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+angular_velocity_curve = SubResource("CurveTexture_ufxru")
+directional_velocity_min = 0.499984
+directional_velocity_max = 0.999984
+directional_velocity_curve = SubResource("CurveXYZTexture_07kk3")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 0, 0)
+damping_max = 35.484
+scale_min = 0.5
+alpha_curve = SubResource("CurveTexture_japjr")
+
+[sub_resource type="Animation" id="Animation_w0v45"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lsais"]
+resource_name = "action"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dejdv"]
+_data = {
+"RESET": SubResource("Animation_w0v45"),
+"action": SubResource("Animation_lsais")
+}
+
+[node name="EffectCollision" type="Node2D"]
+script = ExtResource("1_7x71t")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_arntw")
+texture = ExtResource("2_yr0np")
+lifetime = 0.5
+one_shot = true
+trail_lifetime = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dejdv")
+}

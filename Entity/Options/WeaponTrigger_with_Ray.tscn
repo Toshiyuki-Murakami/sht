@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxml582ud0jrx"]
+
+[ext_resource type="Script" path="res://Entity/Options/WeaponTrigger_with_Ray.gd" id="1_wrttv"]
+
+[node name="WeaponTrigger_with_Ray" type="Node2D"]
+script = ExtResource("1_wrttv")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(400, 0)
+collide_with_areas = true
+collide_with_bodies = false

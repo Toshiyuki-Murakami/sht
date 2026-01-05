@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://djjmmk13fi6wo"]
+
+[ext_resource type="Script" path="res://Scene/options/HUD_FPS.gd" id="1_5a7yw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ed7e0"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_r4k5d"]
+font_size = 24
+
+[node name="HUD_FPS" type="HBoxContainer"]
+offset_right = 128.0
+offset_bottom = 34.0
+script = ExtResource("1_5a7yw")
+
+[node name="head" type="Label" parent="."]
+layout_mode = 2
+text = "FPS:"
+label_settings = SubResource("LabelSettings_ed7e0")
+
+[node name="fps" type="Label" parent="."]
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_r4k5d")

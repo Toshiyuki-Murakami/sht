@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3p4bc8ytyoyh"]
+
+[ext_resource type="Script" path="res://Scene/options/spawns/set.gd" id="1_breba"]
+
+[node name="set" type="Node2D"]
+script = ExtResource("1_breba")

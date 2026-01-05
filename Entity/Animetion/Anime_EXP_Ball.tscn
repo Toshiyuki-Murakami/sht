@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpejune8ancvf"]
+
+[ext_resource type="Script" path="res://Entity/Animetion/Anime_EXP_Ball.gd" id="1_eq5sy"]
+[ext_resource type="Texture2D" uid="uid://cxyfvm3weeqr8" path="res://asset/xp_ball.png" id="2_wtdof"]
+
+[sub_resource type="Animation" id="Animation_wg6jo"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ut58n"]
+resource_name = "create"
+length = 0.6
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_itv3d"]
+_data = {
+"RESET": SubResource("Animation_wg6jo"),
+"create": SubResource("Animation_ut58n")
+}
+
+[node name="Anime_EXP_Ball" type="Node2D" node_paths=PackedStringArray("image_base")]
+script = ExtResource("1_eq5sy")
+start_animation = ""
+image_base = NodePath("image")
+
+[node name="image" type="Sprite2D" parent="."]
+modulate = Color(0.2, 1.2, 1.2, 1)
+texture = ExtResource("2_wtdof")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../image")
+libraries = {
+"": SubResource("AnimationLibrary_itv3d")
+}

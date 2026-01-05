@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://i2xfaulkgvwb"]
+
+[ext_resource type="Script" path="res://Entity/EnemyTriangle01.gd" id="1_tvgl1"]
+[ext_resource type="PackedScene" uid="uid://n1vka3j3s1we" path="res://Entity/Animetion/Anime_Triangle01.tscn" id="2_om2xc"]
+[ext_resource type="PackedScene" uid="uid://c645btwynw72h" path="res://Entity/Options/HitBox.tscn" id="3_nalao"]
+[ext_resource type="PackedScene" uid="uid://bkhm6i521vcuw" path="res://Entity/Options/HitBodySender.tscn" id="4_av8a8"]
+[ext_resource type="PackedScene" uid="uid://qj6efmm5fvff" path="res://Entity/Options/ShotPoints.tscn" id="4_puywo"]
+[ext_resource type="PackedScene" uid="uid://768y85c8mrew" path="res://Entity/Options/TriggerController.tscn" id="5_cks64"]
+[ext_resource type="PackedScene" uid="uid://cfumwk2ml3vk3" path="res://Entity/Options/MoveController.tscn" id="6_dgvyh"]
+[ext_resource type="PackedScene" uid="uid://cvc18aw7btj2b" path="res://Entity/Options/ChaseController.tscn" id="7_k0kp2"]
+[ext_resource type="PackedScene" uid="uid://cyyt77pvlq5p6" path="res://Entity/Options/FireController.tscn" id="8_lkq85"]
+[ext_resource type="PackedScene" uid="uid://cxml582ud0jrx" path="res://Entity/Options/WeaponTrigger_with_Ray.tscn" id="9_q4rvn"]
+[ext_resource type="PackedScene" uid="uid://bn6v7n8wrfep4" path="res://Entity/Options/DropController.tscn" id="11_phh6e"]
+
+[node name="EnemyTriangle01" type="Node2D"]
+script = ExtResource("1_tvgl1")
+speed = 500.0
+
+[node name="Anime_Triangle01" parent="." instance=ExtResource("2_om2xc")]
+
+[node name="HitBox" parent="Anime_Triangle01" instance=ExtResource("3_nalao")]
+scale = Vector2(0.333333, 0.333333)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Anime_Triangle01/HitBox"]
+polygon = PackedVector2Array(-47, -47, -48, 49, 50, 0)
+
+[node name="HitBodySender" parent="Anime_Triangle01" instance=ExtResource("4_av8a8")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Anime_Triangle01/HitBodySender"]
+polygon = PackedVector2Array(-47, -47, -48, 49, 50, 0)
+
+[node name="ShotPoints" parent="." instance=ExtResource("4_puywo")]
+
+[node name="TriggerController" parent="." instance=ExtResource("5_cks64")]
+
+[node name="MoveController" parent="." instance=ExtResource("6_dgvyh")]
+
+[node name="ChaseController" parent="." instance=ExtResource("7_k0kp2")]
+target_in_radius = 10000.0
+turn_speed = 2.0
+to_face = true
+
+[node name="FireController" parent="." node_paths=PackedStringArray("triggerbase") instance=ExtResource("8_lkq85")]
+triggerbase = NodePath("../TriggerController")
+
+[node name="WeaponTrigger_with_Ray" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("9_q4rvn")]
+ray_range = 1000.0
+shotpoints = NodePath("../../ShotPoints")
+bullet_name = "enemy_bullet02"
+
+[node name="DropController" parent="." instance=ExtResource("11_phh6e")]
