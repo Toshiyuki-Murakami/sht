@@ -32,6 +32,8 @@ var state:STATE = STATE.POOL:
 
 ## ターゲット情報
 var target_actor:actor_base
+## ポイント履歴
+var points_log:Array = []
 
 func _ready() -> void:
 	base_name = 'actor'

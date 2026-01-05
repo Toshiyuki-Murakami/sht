@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ceyc4bi5wldg0"]
+[gd_scene load_steps=12 format=3 uid="uid://ceyc4bi5wldg0"]
 
 [ext_resource type="Script" path="res://Entity/Player.gd" id="1_20725"]
 [ext_resource type="PackedScene" uid="uid://bfv1l5kxanl1x" path="res://Entity/Options/InputController.tscn" id="1_lw4id"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qj6efmm5fvff" path="res://Entity/Options/ShotPoints.tscn" id="6_gj85q"]
 [ext_resource type="PackedScene" uid="uid://bdc0g342k4up2" path="res://Entity/Options/WeaponTrigger.tscn" id="7_mda3a"]
 [ext_resource type="PackedScene" uid="uid://dr2gb58vnnmii" path="res://Entity/Options/EXP_Activater.tscn" id="9_1fra6"]
+[ext_resource type="PackedScene" uid="uid://cbw06lnakc02v" path="res://Entity/Options/TraceGenerator.tscn" id="10_gxkk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvnos"]
 size = Vector2(32, 32)
@@ -43,3 +44,6 @@ cooltime = 0.1
 multi = 3
 
 [node name="EXP_Activater" parent="." instance=ExtResource("9_1fra6")]
+
+[node name="TraceGenerator" parent="." instance=ExtResource("10_gxkk0")]
+log_count = 120

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://co8siajjum86w"]
+[gd_scene load_steps=15 format=3 uid="uid://co8siajjum86w"]
 
 [ext_resource type="Script" path="res://Stage.gd" id="1_6v6m1"]
 [ext_resource type="Shader" path="res://stage_star.gdshader" id="2_6onc7"]
 [ext_resource type="PackedScene" uid="uid://ceyc4bi5wldg0" path="res://Entity/Player.tscn" id="2_han3a"]
 [ext_resource type="PackedScene" uid="uid://dtixefuhc4tsd" path="res://Scene/options/Main_Camera.tscn" id="4_uifhw"]
 [ext_resource type="PackedScene" uid="uid://f6w3fnbjtkey" path="res://Entity/Options/PoolController.tscn" id="5_eck0q"]
+[ext_resource type="PackedScene" uid="uid://cxceh6a04nncl" path="res://Entity/PlayerOption.tscn" id="5_vqo5j"]
 [ext_resource type="PackedScene" uid="uid://ccdoluqc3tsv1" path="res://Entity/TargetMarker.tscn" id="6_gr45d"]
 [ext_resource type="PackedScene" uid="uid://c3p4bc8ytyoyh" path="res://Scene/options/spawns/set.tscn" id="7_0fwxp"]
 [ext_resource type="PackedScene" uid="uid://vrlhutg545qs" path="res://Scene/options/SpawnController.tscn" id="7_w6xsc"]
@@ -46,6 +47,9 @@ environment = SubResource("Environment_knhfg")
 marker = NodePath("../../TargetMarker")
 
 [node name="MainCamera" parent="entity/Player" instance=ExtResource("4_uifhw")]
+
+[node name="PlayerOption" parent="entity" node_paths=PackedStringArray("trace_player") instance=ExtResource("5_vqo5j")]
+trace_player = NodePath("../Player")
 
 [node name="PoolController" parent="." instance=ExtResource("5_eck0q")]
 
