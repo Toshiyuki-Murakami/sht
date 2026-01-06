@@ -46,4 +46,4 @@ multi = 3
 [node name="EXP_Activater" parent="." instance=ExtResource("9_1fra6")]
 
 [node name="TraceGenerator" parent="." instance=ExtResource("10_gxkk0")]
-log_count = 120
+log_count = 500

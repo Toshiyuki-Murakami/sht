@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxceh6a04nncl"]
+[gd_scene load_steps=11 format=3 uid="uid://cxceh6a04nncl"]
 
 [ext_resource type="Script" path="res://Entity/PlayerOption.gd" id="1_bj8xi"]
 [ext_resource type="PackedScene" uid="uid://buq6moxe55pts" path="res://Entity/Animetion/Anime_Circle.tscn" id="2_21hsg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://768y85c8mrew" path="res://Entity/Options/TriggerController.tscn" id="5_muhi0"]
 [ext_resource type="PackedScene" uid="uid://cyyt77pvlq5p6" path="res://Entity/Options/FireController.tscn" id="8_1s36c"]
 [ext_resource type="PackedScene" uid="uid://xbjuhs5initw" path="res://Entity/Options/TraceController.tscn" id="8_wtqve"]
+[ext_resource type="PackedScene" uid="uid://xxkdfc8h7krg" path="res://Entity/Options/TargetController.tscn" id="9_5cxyc"]
 [ext_resource type="PackedScene" uid="uid://bdc0g342k4up2" path="res://Entity/Options/WeaponTrigger.tscn" id="9_xhgpk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j21sg"]
@@ -25,6 +26,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_j21sg")
 
 [node name="ShotPoints" parent="." instance=ExtResource("4_np0es")]
+to_target_face = true
 
 [node name="TriggerController" parent="." instance=ExtResource("5_muhi0")]
 
@@ -33,6 +35,8 @@ triggerbase = NodePath("../TriggerController")
 
 [node name="WeaponTrigger" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("9_xhgpk")]
 shotpoints = NodePath("../../ShotPoints")
-bullet_name = "enemy_bullet"
+cooltime = 0.5
 
 [node name="TraceController" parent="." instance=ExtResource("8_wtqve")]
+
+[node name="TargetController" parent="." instance=ExtResource("9_5cxyc")]

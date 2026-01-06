@@ -51,6 +51,14 @@ marker = NodePath("../../TargetMarker")
 [node name="PlayerOption" parent="entity" node_paths=PackedStringArray("trace_player") instance=ExtResource("5_vqo5j")]
 trace_player = NodePath("../Player")
 
+[node name="PlayerOption2" parent="entity" node_paths=PackedStringArray("trace_player") instance=ExtResource("5_vqo5j")]
+trace_player = NodePath("../Player")
+trace_distance = 128.0
+
+[node name="PlayerOption3" parent="entity" node_paths=PackedStringArray("trace_player") instance=ExtResource("5_vqo5j")]
+trace_player = NodePath("../Player")
+trace_distance = 192.0
+
 [node name="PoolController" parent="." instance=ExtResource("5_eck0q")]
 
 [node name="TargetMarker" parent="." instance=ExtResource("6_gr45d")]

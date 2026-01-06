@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 func _on_change_deactivate():
 	super()
 	## point履歴の初期化
-	actor.points_logs = []
+	actor.points_log = []
 
 func point_logging():
 	if actor.velocity != Vector2.ZERO:
