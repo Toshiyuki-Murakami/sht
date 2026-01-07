@@ -28,7 +28,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if to_target_face:
 		if actor.target_actor:
-			rotation = (actor.target_actor.global_position - actor.global_position).angle()
+			if !actor.hold:
+				rotation = (actor.target_actor.global_position - actor.global_position).angle()
 
 func set_multi(_value:int, _span:float):
 	multi = _value

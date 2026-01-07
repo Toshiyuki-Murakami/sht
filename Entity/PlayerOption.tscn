@@ -37,6 +37,7 @@ triggerbase = NodePath("../TriggerController")
 shotpoints = NodePath("../../ShotPoints")
 bullet_name = "laser01"
 cooltime = 4.0
+shot_after_hold = true
 
 [node name="TraceController" parent="." instance=ExtResource("8_wtqve")]
 

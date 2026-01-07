@@ -14,6 +14,8 @@ class_name weapon_trigger
 @export var multi_span:float = 8.0
 ## マルチショットの角度
 @export var multi_angle_deg:float = 5.0
+## 射撃後cooltimeまでホールド
+@export var shot_after_hold:bool = false
 
 var actor:actor_base
 
@@ -25,6 +27,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if timer > 0.0:
 		timer -= _delta
+		if timer <= 0.0:
+			if shot_after_hold:
+				actor.hold = false
+		
 
 func reset_timer():
 	timer = cooltime
@@ -52,6 +58,8 @@ func trigger():
 				'point_index': i,
 			})
 			## タイマーリセット
+		if shot_after_hold:
+			actor.hold = true
 		reset_timer()
 
 func calc_direction(_idx:int, _dir:Vector2):

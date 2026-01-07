@@ -30,6 +30,9 @@ var state:STATE = STATE.POOL:
 			change_state.emit(_value)
 		state = _value
 
+## 向きをホールド
+var hold:bool = false
+
 ## ターゲット情報
 var target_actor:actor_base
 ## ポイント履歴
