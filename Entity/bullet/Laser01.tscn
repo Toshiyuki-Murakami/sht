@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://35oecpbx4cdr"]
+
+[ext_resource type="Script" path="res://Entity/bullet/Laser01.gd" id="1_chx1q"]
+[ext_resource type="PackedScene" uid="uid://cww5j0cca12k6" path="res://Entity/Options/HitSender.tscn" id="2_0ppmu"]
+[ext_resource type="PackedScene" uid="uid://y05nfam6afb0" path="res://Entity/Animetion/Bullet/Anime_Laser01.tscn" id="3_bhtvw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy6sm"]
+size = Vector2(2000, 9)
+
+[node name="Laser01" type="Node2D" node_paths=PackedStringArray("image_base")]
+script = ExtResource("1_chx1q")
+image_base = NodePath("Anime_Laser01")
+hit_count = 9999
+lifetime = 1.0
+to_face = true
+
+[node name="HitSender" parent="." instance=ExtResource("2_0ppmu")]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+position = Vector2(1001, -1)
+shape = SubResource("RectangleShape2D_hy6sm")
+
+[node name="Anime_Laser01" parent="." instance=ExtResource("3_bhtvw")]

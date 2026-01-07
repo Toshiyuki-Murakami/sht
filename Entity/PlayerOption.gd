@@ -7,3 +7,4 @@ class_name player_option
 
 func _ready() -> void:
 	super()
+	global_position = trace_player.global_position

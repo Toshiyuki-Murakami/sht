@@ -47,6 +47,9 @@ func trigger():
 			_bullet.activate({
 				'start_position': shotpoints.get_points(i),
 				'direction': calc_direction(i, dir),
+				'owner_actor': actor,
+				'shot_points': shotpoints,
+				'point_index': i,
 			})
 			## タイマーリセット
 		reset_timer()

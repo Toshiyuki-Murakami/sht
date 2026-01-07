@@ -31,7 +31,10 @@ class_name pool_base
 		'key_name': 'enemy_bullet02',
 		'size': 100,
 	},
-	
+	'laser01': {
+		'key_name': 'laser01',
+		'size': 20,
+	},
 	'effect_playerdeath': {
 		'key_name': 'effect_playerdeath',
 		'size': 1,

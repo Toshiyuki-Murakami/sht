@@ -12,6 +12,9 @@ class_name bullet_base
 ## 進行方向に向ける
 @export var to_face:bool = false
 
+## 所有者
+var owner_actor:actor_base
+
 var save_hit_count:int = 1
 var timer:float = 0.0
 
@@ -44,6 +47,8 @@ func spawn(_data:Dictionary):
 		max_range = _data.max_range
 	if _data.has('lifetime'):
 		lifetime = _data.lifetime
+	if _data.has('owner_actor'):
+		owner_actor = _data.owner_actor
 
 	global_position = start_position
 	velocity = direction * speed

@@ -35,7 +35,8 @@ triggerbase = NodePath("../TriggerController")
 
 [node name="WeaponTrigger" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("9_xhgpk")]
 shotpoints = NodePath("../../ShotPoints")
-cooltime = 0.5
+bullet_name = "laser01"
+cooltime = 4.0
 
 [node name="TraceController" parent="." instance=ExtResource("8_wtqve")]
 
