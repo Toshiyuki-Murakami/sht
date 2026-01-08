@@ -47,12 +47,20 @@ func check_target():
 		return true
 	## 対象グループ取得
 	var nodes_in_group = get_tree().get_nodes_in_group(target_group)
+	var min_dist:float = 9999.9
+	var min_node:actor_base = null
 	for _node in nodes_in_group:
-		if actor.global_position.distance_to(_node.global_position) <= target_in_radius:
-			is_chase = true
-			actor.target_actor = _node
-			actor.change_trigger.emit(trigger_base.TRIGGER_TYPES.FIRE, true)
-			return true
+		var _dist:float = actor.global_position.distance_to(_node.global_position)
+		if _dist <= target_in_radius:
+			if min_dist > _dist:
+				min_dist = _dist
+				min_node = _node
+	
+	if min_node:
+		is_chase = true
+		actor.target_actor = min_node
+		actor.change_trigger.emit(trigger_base.TRIGGER_TYPES.FIRE, true)
+		return true
 	
 	return false
 

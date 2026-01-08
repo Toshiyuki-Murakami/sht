@@ -35,6 +35,11 @@ class_name pool_base
 		'key_name': 'laser01',
 		'size': 20,
 	},
+	'missile01': {
+		'key_name': 'missile01',
+		'size': 50,
+	},
+	
 	'effect_playerdeath': {
 		'key_name': 'effect_playerdeath',
 		'size': 1,

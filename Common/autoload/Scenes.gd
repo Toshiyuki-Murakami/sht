@@ -13,6 +13,7 @@ var Resources:Dictionary = {
 	'enemy_bullet': preload("res://Entity/bullet/EnemyBullrt.tscn").instantiate(),
 	'enemy_bullet02': preload("res://Entity/bullet/EnemyBullrt02.tscn").instantiate(),
 	'laser01': preload("res://Entity/bullet/Laser01.tscn").instantiate(),
+	'missile01': preload("res://Entity/bullet/Missile01.tscn").instantiate(),
 	
 	## effect
 	'effect_playerdeath': preload("res://Entity/Effect/Effect_PlayerDeath.tscn").instantiate(),

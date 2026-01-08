@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://t2jyt88i5usn"]
+
+[ext_resource type="Script" path="res://Entity/Animetion/Bullet/Anime_Missile01.gd" id="1_ycptw"]
+[ext_resource type="Texture2D" uid="uid://dufdi1w4fnr5c" path="res://asset/missile.png" id="2_dxv45"]
+
+[sub_resource type="Animation" id="Animation_pct7s"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_fke88"]
+resource_name = "action"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddvdw"]
+_data = {
+"RESET": SubResource("Animation_pct7s"),
+"action": SubResource("Animation_fke88")
+}
+
+[node name="Anime_Missile01" type="Node2D" node_paths=PackedStringArray("image_base")]
+script = ExtResource("1_ycptw")
+image_base = NodePath("image")
+
+[node name="image" type="Sprite2D" parent="."]
+texture = ExtResource("2_dxv45")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ddvdw")
+}
