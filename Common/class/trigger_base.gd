@@ -1,7 +1,10 @@
 extends actor_controller_base
 class_name trigger_base
 
-enum TRIGGER_TYPES {NON, FIRE}
+enum TRIGGER_TYPES {NON, FIRE, SHIELD}
+
+## 切り替わった直後のトリガー
+signal just_change_trigger(_type:TRIGGER_TYPES, _active:bool)
 
 ## fire trigger
 var fire_trigger:bool = false

@@ -17,6 +17,8 @@ var owner_actor:actor_base
 
 var save_hit_count:int = 1
 var timer:float = 0.0
+## shield範囲接触時間
+var shield_in_time:float = 0.0
 
 func _ready() -> void:
 	save_hit_count = hit_count

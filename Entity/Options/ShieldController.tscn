@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b4r03mkrww25c"]
+
+[node name="ShieldController" type="Node2D"]

@@ -9,9 +9,11 @@ const spawn_center_position:Vector2 = Vector2(500, 500)
 var stage:Node2D
 var entity_node:Node2D
 var poolbase:pool_base
+var display_border:ReferenceRect
 
 ## === 
 var marker:target_marker
+
 
 ## ===== 経験値
 var xp:int = 0

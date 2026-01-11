@@ -21,6 +21,7 @@ var Resources:Dictionary = {
 	'effect_collision': preload("res://Entity/Effect/EffectCollision.tscn").instantiate(),
 	'effect_circle': preload("res://Entity/Effect/Effect_Circle.tscn").instantiate(),
 	'effect_bullethit': preload("res://Entity/Effect/Effect_BulletHit.tscn").instantiate(),
+	'justguard': preload("res://Entity/Effect/Effect_JustGuard.tscn").instantiate(),
 	
 	## etc
 	'exp_ball': preload("res://Entity/etc/EXP_Ball.tscn").instantiate(),

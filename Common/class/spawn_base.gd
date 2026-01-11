@@ -7,7 +7,7 @@ class_name spawn_base
 @export var fisnish_range_angle:float = 60.0
 ## 召喚の中心点
 @export var spawn_radius:float = 512.0
-@export var spawn_center_position:Vector2 = Vector2(500, 500)
+@export var spawn_center_position:Vector2 = Vector2(960, 960)
 
 var current_angle:float = 0.0
 var finish_angle:float = 0.0

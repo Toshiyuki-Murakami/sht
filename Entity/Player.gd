@@ -1,10 +1,10 @@
 extends actor_base
+class_name player_class
 
 @export var marker:actor_base
 
 func _ready() -> void:
 	super()
-	global_position = Vector2(200,200)
 	state = STATE.MOVE
 	## グループ追加
 	add_to_group(Global.PLAYER_GROUP)

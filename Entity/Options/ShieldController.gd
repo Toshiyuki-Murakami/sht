@@ -1,0 +1,1 @@
+extends actor_controller_base

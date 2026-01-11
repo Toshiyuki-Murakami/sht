@@ -21,7 +21,7 @@ class_name pool_base
 
 	'main_bullet': {
 		'key_name': 'main_bullet',
-		'size': 200,	
+		'size': 400,	
 	},
 	'enemy_bullet': {
 		'key_name': 'enemy_bullet',
@@ -55,6 +55,10 @@ class_name pool_base
 	'effect_bullethit': {
 		'key_name': 'effect_bullethit',
 		'size': 500,
+	},
+	'justguard': {
+		'key_name': 'justguard',
+		'size': 5,
 	},
 	
 	'exp_ball': {

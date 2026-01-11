@@ -27,3 +27,23 @@ texture = ExtResource("2_v5jbx")
 [node name="points4" type="Sprite2D" parent="points_list"]
 position = Vector2(0, 24)
 texture = ExtResource("2_v5jbx")
+
+[node name="points5" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 30)
+texture = ExtResource("2_v5jbx")
+
+[node name="points6" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 36)
+texture = ExtResource("2_v5jbx")
+
+[node name="points7" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 42)
+texture = ExtResource("2_v5jbx")
+
+[node name="points8" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 48)
+texture = ExtResource("2_v5jbx")
+
+[node name="points9" type="Sprite2D" parent="points_list"]
+position = Vector2(0, 54)
+texture = ExtResource("2_v5jbx")

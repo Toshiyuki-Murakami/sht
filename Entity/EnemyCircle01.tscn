@@ -40,4 +40,3 @@ triggerbase = NodePath("../TriggerController")
 [node name="WeaponTrigger" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("9_e4tn4")]
 shotpoints = NodePath("../../ShotPoints")
 bullet_name = "enemy_bullet"
-multi = 1

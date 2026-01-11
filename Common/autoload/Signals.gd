@@ -1,5 +1,7 @@
 extends Node
 
+signal set_burst(_flg:bool)
+
 ## Spawnさせる
 signal set_spawn(_data:Dictionary)
 

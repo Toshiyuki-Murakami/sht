@@ -29,6 +29,15 @@ func input_process(_delta:float):
 	## 発射ボタン判定
 	fire_trigger = Input.is_action_pressed(fire_button)
 	
+	if Input.is_action_just_pressed('game_shield'):
+		just_change_trigger.emit(trigger_base.TRIGGER_TYPES.SHIELD, true)
+	if Input.is_action_just_released('game_shield'):
+		just_change_trigger.emit(trigger_base.TRIGGER_TYPES.SHIELD, false)
+	if Input.is_action_just_pressed('game_chage'):
+		Signals.set_burst.emit(true)
+	if Input.is_action_just_released('game_chage'):
+		Signals.set_burst.emit(false)	
+	
 	# 移動量取得
 	velocity = Input.get_vector(keymap_left, keymap_right, keymap_up, keymap_down)
 	# マウス

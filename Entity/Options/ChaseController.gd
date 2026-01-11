@@ -3,6 +3,8 @@ class_name chase_controller
 
 ## ターゲット認識させる距離
 @export var target_in_radius:float = 400.0
+## 視野角
+@export var fov:float = 180.0
 ## ターゲットするグループ名
 @export var target_group:String = Global.PLAYER_GROUP
 ## ターンスピード
@@ -15,7 +17,7 @@ var is_chase:bool = false
 func _process(_delta: float) -> void:
 	if check_target():
 		homing(_delta)
-		face()
+	face()
 
 func _on_change_state(_state:actor_base.STATE):
 	if _state == actor_base.STATE.MOVE:
@@ -51,10 +53,13 @@ func check_target():
 	var min_node:actor_base = null
 	for _node in nodes_in_group:
 		var _dist:float = actor.global_position.distance_to(_node.global_position)
+		var _angle:float = (_node.global_position - actor.global_position).angle()
 		if _dist <= target_in_radius:
-			if min_dist > _dist:
-				min_dist = _dist
-				min_node = _node
+			## 扇判定
+			if is_in_fov(actor.global_position, actor.rotation, _node.global_position, deg_to_rad(fov)):
+				if min_dist > _dist:
+					min_dist = _dist
+					min_node = _node
 	
 	if min_node:
 		is_chase = true
@@ -67,6 +72,7 @@ func check_target():
 
 func homing(_delta:float):
 	if !Game.is_active(actor.target_actor):
+		is_chase = false
 		return false
 	var to_target:Vector2 = (actor.target_actor.global_position - actor.global_position).normalized()
 	var current_direction = Vector2.RIGHT.rotated(actor.velocity.angle())	
@@ -76,3 +82,7 @@ func homing(_delta:float):
 	
 	return true
 	
+func is_in_fov(origin: Vector2, forward_angle: float, target: Vector2, _fov: float) -> bool:
+	var dir := (target - origin).normalized()
+	var angle := dir.angle()
+	return abs(wrapf(angle - forward_angle, -PI, PI)) <= _fov * 0.5

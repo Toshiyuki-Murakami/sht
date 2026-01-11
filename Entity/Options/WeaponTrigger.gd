@@ -7,7 +7,8 @@ class_name weapon_trigger
 @export var bullet_name:String = 'main_bullet'
 ## Cooltime
 @export var cooltime:float = 1.0
-
+## Burst Mode設定
+@export var use_burst:bool = false
 ## マルチショット数
 @export var multi:int = 1
 ## マルチショットの間隔
@@ -19,10 +20,17 @@ class_name weapon_trigger
 
 var actor:actor_base
 
+var save_cooltime:float = 0.0
+var save_multi:int = 1
+
 var timer:float = 0.0
+
 
 func _ready() -> void:
 	reset_timer()
+	## Burst Modeが有効なら設定
+	if use_burst:
+		Signals.set_burst.connect(_on_set_burst)
 
 func _process(_delta: float) -> void:
 	if timer > 0.0:
@@ -30,7 +38,17 @@ func _process(_delta: float) -> void:
 		if timer <= 0.0:
 			if shot_after_hold:
 				actor.hold = false
-		
+
+## burstモード処理
+func _on_set_burst(_flg:bool):
+	if _flg:
+		save_cooltime = cooltime
+		save_multi = multi
+		cooltime = cooltime / 4
+		multi = multi * 2
+	else:
+		cooltime = save_cooltime
+		multi = save_multi
 
 func reset_timer():
 	timer = cooltime

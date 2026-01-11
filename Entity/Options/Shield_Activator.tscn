@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw2nsp3piglsr"]
+
+[ext_resource type="Script" path="res://Entity/Options/Shield_Activator.gd" id="1_vt7r6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvsla"]
+radius = 32.0
+
+[node name="Shield_Activator" type="Area2D"]
+collision_layer = 2048
+collision_mask = 32
+script = ExtResource("1_vt7r6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yvsla")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ceyc4bi5wldg0"]
+[gd_scene load_steps=14 format=3 uid="uid://ceyc4bi5wldg0"]
 
 [ext_resource type="Script" path="res://Entity/Player.gd" id="1_20725"]
 [ext_resource type="PackedScene" uid="uid://bfv1l5kxanl1x" path="res://Entity/Options/InputController.tscn" id="1_lw4id"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cyyt77pvlq5p6" path="res://Entity/Options/FireController.tscn" id="6_8v0xp"]
 [ext_resource type="PackedScene" uid="uid://qj6efmm5fvff" path="res://Entity/Options/ShotPoints.tscn" id="6_gj85q"]
 [ext_resource type="PackedScene" uid="uid://bdc0g342k4up2" path="res://Entity/Options/WeaponTrigger.tscn" id="7_mda3a"]
-[ext_resource type="PackedScene" uid="uid://dr2gb58vnnmii" path="res://Entity/Options/EXP_Activater.tscn" id="9_1fra6"]
+[ext_resource type="PackedScene" uid="uid://dr2gb58vnnmii" path="res://Entity/Options/EXP_Activator.tscn" id="9_1fra6"]
 [ext_resource type="PackedScene" uid="uid://cbw06lnakc02v" path="res://Entity/Options/TraceGenerator.tscn" id="10_gxkk0"]
+[ext_resource type="PackedScene" uid="uid://cw2nsp3piglsr" path="res://Entity/Options/Shield_Activator.tscn" id="11_3hxqv"]
+[ext_resource type="PackedScene" uid="uid://b1xcc5en3u5sg" path="res://Entity/Effect/Effect_Shield.tscn" id="12_o0j7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvnos"]
 size = Vector2(32, 32)
@@ -41,9 +43,20 @@ triggerbase = NodePath("../InputController")
 [node name="WeaponTrigger" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("7_mda3a")]
 shotpoints = NodePath("../../ShotPoints")
 cooltime = 0.1
+use_burst = true
 multi = 3
-
-[node name="EXP_Activater" parent="." instance=ExtResource("9_1fra6")]
 
 [node name="TraceGenerator" parent="." instance=ExtResource("10_gxkk0")]
 log_count = 500
+
+[node name="EXP_Activator" parent="." instance=ExtResource("9_1fra6")]
+visible = false
+
+[node name="Shield_Activator" parent="." node_paths=PackedStringArray("trriger", "shield_main_effect", "shield_hit_effect") instance=ExtResource("11_3hxqv")]
+trriger = NodePath("../InputController")
+shield_main_effect = NodePath("Effect_Shield")
+shield_hit_effect = NodePath("Effect_Shield2")
+
+[node name="Effect_Shield" parent="Shield_Activator" instance=ExtResource("12_o0j7e")]
+
+[node name="Effect_Shield2" parent="Shield_Activator" instance=ExtResource("12_o0j7e")]

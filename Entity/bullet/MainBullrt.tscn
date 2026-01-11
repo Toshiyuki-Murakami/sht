@@ -12,7 +12,7 @@ size = Vector2(15, 9)
 script = ExtResource("1_l3pmf")
 image_base = NodePath("Anime_Bullet01")
 to_face = true
-speed = 1024.0
+speed = 2048.0
 
 [node name="HitSender" parent="." instance=ExtResource("3_3me5l")]
 collision_layer = 2
@@ -25,3 +25,4 @@ shape = SubResource("RectangleShape2D_hy6sm")
 [node name="MoveController" parent="." instance=ExtResource("4_y7jfp")]
 
 [node name="Anime_Bullet01" parent="." instance=ExtResource("4_cewbw")]
+start_animation = ""

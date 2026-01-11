@@ -11,6 +11,7 @@ size = Vector2(16, 12)
 
 [node name="Missile01" type="Node2D"]
 script = ExtResource("1_m8id7")
+lifetime = 3.0
 
 [node name="HitSender" parent="." instance=ExtResource("2_d8jua")]
 collision_layer = 2
@@ -23,6 +24,7 @@ shape = SubResource("RectangleShape2D_hy6sm")
 
 [node name="ChaseController" parent="." instance=ExtResource("4_ols7w")]
 target_in_radius = 600.0
+fov = 30.0
 target_group = "enemy"
 turn_speed = 10.0
 to_face = true
