@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Entity/Player.gd" id="1_20725"]
 [ext_resource type="PackedScene" uid="uid://bfv1l5kxanl1x" path="res://Entity/Options/InputController.tscn" id="1_lw4id"]
-[ext_resource type="PackedScene" uid="uid://cfumwk2ml3vk3" path="res://Entity/Options/MoveController.tscn" id="2_e7kex"]
+[ext_resource type="PackedScene" uid="uid://byfwww5pippoi" path="res://Entity/Options/PlayerMoveController.tscn" id="3_6lgp0"]
 [ext_resource type="PackedScene" uid="uid://vrwai0a2luc7" path="res://Entity/Animetion/Anime_Square.tscn" id="4_jrnut"]
 [ext_resource type="PackedScene" uid="uid://c645btwynw72h" path="res://Entity/Options/HitBox.tscn" id="5_xkbsa"]
 [ext_resource type="PackedScene" uid="uid://cyyt77pvlq5p6" path="res://Entity/Options/FireController.tscn" id="6_8v0xp"]
@@ -24,7 +24,7 @@ death_effect = "effect_playerdeath"
 
 [node name="InputController" parent="." instance=ExtResource("1_lw4id")]
 
-[node name="MoveController" parent="." instance=ExtResource("2_e7kex")]
+[node name="PlayerMoveController" parent="." instance=ExtResource("3_6lgp0")]
 
 [node name="ShotPoints" parent="." instance=ExtResource("6_gj85q")]
 to_target_face = true

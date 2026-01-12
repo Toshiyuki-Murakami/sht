@@ -10,6 +10,7 @@ var stage:Node2D
 var entity_node:Node2D
 var poolbase:pool_base
 var display_border:ReferenceRect
+var player_border:ReferenceRect
 
 ## === 
 var marker:target_marker

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dj8ml1otpgkm6"]
+[gd_scene load_steps=13 format=3 uid="uid://dj8ml1otpgkm6"]
 
 [ext_resource type="Script" path="res://Entity/EnemyCircle01.gd" id="1_f0ndr"]
 [ext_resource type="PackedScene" uid="uid://buq6moxe55pts" path="res://Entity/Animetion/Anime_Circle.tscn" id="2_dbaqq"]
 [ext_resource type="PackedScene" uid="uid://c645btwynw72h" path="res://Entity/Options/HitBox.tscn" id="3_k50ml"]
 [ext_resource type="PackedScene" uid="uid://cfumwk2ml3vk3" path="res://Entity/Options/MoveController.tscn" id="3_xgane"]
+[ext_resource type="PackedScene" uid="uid://bkhm6i521vcuw" path="res://Entity/Options/HitBodySender.tscn" id="4_r5eph"]
 [ext_resource type="PackedScene" uid="uid://qj6efmm5fvff" path="res://Entity/Options/ShotPoints.tscn" id="4_sgmwp"]
 [ext_resource type="PackedScene" uid="uid://cvc18aw7btj2b" path="res://Entity/Options/ChaseController.tscn" id="5_ebr7v"]
 [ext_resource type="PackedScene" uid="uid://768y85c8mrew" path="res://Entity/Options/TriggerController.tscn" id="5_mv3l0"]
@@ -12,6 +13,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j21sg"]
 radius = 15.5242
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwpe4"]
+size = Vector2(127, 128)
 
 [node name="EnemyCircle01" type="Node2D"]
 script = ExtResource("1_f0ndr")
@@ -25,6 +29,12 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anime_Circle/HitBox"]
 shape = SubResource("CircleShape2D_j21sg")
+
+[node name="HitBodySender" parent="." instance=ExtResource("4_r5eph")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBodySender"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_gwpe4")
 
 [node name="ShotPoints" parent="." instance=ExtResource("4_sgmwp")]
 

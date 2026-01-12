@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://co8siajjum86w"]
+[gd_scene load_steps=16 format=3 uid="uid://co8siajjum86w"]
 
 [ext_resource type="Script" path="res://Stage.gd" id="1_6v6m1"]
 [ext_resource type="Shader" path="res://stage_star.gdshader" id="2_6onc7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://daf6xg3wcidab" path="res://Scene/HUD.tscn" id="8_5mm12"]
 [ext_resource type="PackedScene" uid="uid://dabxladutxocj" path="res://Scene/options/spawns/normal.tscn" id="8_l4nrg"]
 [ext_resource type="PackedScene" uid="uid://c7pwf4nhk5j83" path="res://Scene/options/spawns/spit.tscn" id="10_xbe6d"]
+[ext_resource type="PackedScene" uid="uid://5k3hvbsffk4m" path="res://Scene/options/Hit_Effect_Layer.tscn" id="13_rwu86"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1uby"]
 shader = ExtResource("2_6onc7")
@@ -36,7 +37,6 @@ glow_bloom = 0.1
 glow_blend_mode = 0
 
 [node name="Stage" type="Node2D"]
-position = Vector2(123, 130)
 script = ExtResource("1_6v6m1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -53,6 +53,12 @@ offset_top = -960.0
 offset_right = 2880.0
 offset_bottom = 2880.0
 border_width = 5.0
+editor_only = false
+
+[node name="player_border" type="ReferenceRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1920.0
+border_width = 2.0
 editor_only = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -91,3 +97,5 @@ spawn_name = "set"
 [node name="spit" parent="SpawnController" instance=ExtResource("10_xbe6d")]
 
 [node name="HUD" parent="." instance=ExtResource("8_5mm12")]
+
+[node name="HitEffectLayer" parent="." instance=ExtResource("13_rwu86")]

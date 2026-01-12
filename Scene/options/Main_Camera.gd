@@ -9,7 +9,7 @@ var time:float = 0.0
 
 func _ready():
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
-	noise.frequency = 20.0
+	noise.frequency = 40.0
 	
 	Signals.hit_player.connect(_on_hit_player)
 
