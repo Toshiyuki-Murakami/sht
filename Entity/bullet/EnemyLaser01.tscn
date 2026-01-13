@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci4x7kd026k2d"]
+
+[ext_resource type="Script" path="res://Entity/bullet/EnemyLaser01.gd" id="1_w5xyh"]
+[ext_resource type="PackedScene" uid="uid://cww5j0cca12k6" path="res://Entity/Options/HitSender.tscn" id="2_ydnut"]
+[ext_resource type="PackedScene" uid="uid://bggrt6r46pmt3" path="res://Entity/Animetion/Bullet/Anime_EnemyLaser01.tscn" id="3_0mjft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy6sm"]
+size = Vector2(2000, 9)
+
+[node name="EnemyLaser01" type="Node2D" node_paths=PackedStringArray("image_base")]
+script = ExtResource("1_w5xyh")
+image_base = NodePath("Anime_EnemyLaser01")
+hit_count = 9999
+lifetime = 2.5
+to_face = true
+
+[node name="HitSender" parent="." instance=ExtResource("2_ydnut")]
+is_continuous = true
+continuous_time = 1.0
+notice_time = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+position = Vector2(1001, -1)
+shape = SubResource("RectangleShape2D_hy6sm")
+disabled = true
+
+[node name="Anime_EnemyLaser01" parent="." instance=ExtResource("3_0mjft")]

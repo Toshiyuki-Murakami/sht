@@ -7,6 +7,7 @@ var Resources:Dictionary = {
 	'enemy_square128': preload("res://Entity/EnemySquare128.tscn").instantiate(),
 	'enemy_circle01': preload("res://Entity/EnemyCircle01.tscn").instantiate(),
 	'enemy_cross': preload("res://Entity/EnemyCross.tscn").instantiate(),
+	'enemy_totu01': preload("res://Entity/EnemyTotu01.tscn").instantiate(),
 	
 	## bullet
 	'main_bullet': preload("res://Entity/bullet/MainBullrt.tscn").instantiate(),
@@ -14,6 +15,7 @@ var Resources:Dictionary = {
 	'enemy_bullet02': preload("res://Entity/bullet/EnemyBullrt02.tscn").instantiate(),
 	'laser01': preload("res://Entity/bullet/Laser01.tscn").instantiate(),
 	'missile01': preload("res://Entity/bullet/Missile01.tscn").instantiate(),
+	'enemy_laser01': preload("res://Entity/bullet/EnemyLaser01.tscn").instantiate(),
 	
 	## effect
 	'effect_playerdeath': preload("res://Entity/Effect/Effect_PlayerDeath.tscn").instantiate(),

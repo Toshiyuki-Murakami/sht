@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfg71m3m3vs5u"]
+
+[ext_resource type="Script" path="res://Entity/Options/ShotStop_MoveController.gd" id="1_0w3a0"]
+
+[node name="ShotStop_MoveController" type="Node2D"]
+script = ExtResource("1_0w3a0")

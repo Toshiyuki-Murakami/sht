@@ -5,6 +5,7 @@ extends weapon_trigger
 ## ターゲットの射程
 @export var ray_range:float = 500.0
 
+
 func _ready() -> void:
 	super()
 	ray_cast_2d.target_position.x = ray_range

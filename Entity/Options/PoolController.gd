@@ -18,7 +18,11 @@ class_name pool_base
 		'key_name': 'enemy_triangle01',
 		'size': 30,
 	},
-
+	'enemy_totu01':{
+		'key_name': 'enemy_totu01',
+		'size': 30,
+	},
+	
 	'main_bullet': {
 		'key_name': 'main_bullet',
 		'size': 400,	
@@ -38,6 +42,10 @@ class_name pool_base
 	'missile01': {
 		'key_name': 'missile01',
 		'size': 50,
+	},
+	'enemy_laser01': {
+		'key_name': 'enemy_laser01',
+		'size': 20,
 	},
 	
 	'effect_playerdeath': {

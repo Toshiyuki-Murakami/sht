@@ -9,6 +9,8 @@ class_name hitsender
 @export var is_continuous:bool = false
 ## 継続ダメージ間隔
 @export var continuous_time:float = 0.0
+## 予告時間
+@export var notice_time:float = 0.0
 
 var actor:bullet_base
 var collshape:CollisionShape2D
@@ -59,7 +61,8 @@ func _on_change_deactivate():
 
 func _on_change_state(_state:actor_base.STATE):
 	if _state == actor_base.STATE.MOVE:
-		collshape.disabled = false
+		if notice_time == 0.0:
+			collshape.disabled = false
 
 func init_entity():
 	actor.change_activate.connect(_on_change_activate)

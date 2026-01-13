@@ -1,0 +1,63 @@
+[gd_scene load_steps=14 format=3 uid="uid://bn8vvlqypg3hc"]
+
+[ext_resource type="Script" path="res://Entity/EnemyTotu01.gd" id="1_4qnrr"]
+[ext_resource type="PackedScene" uid="uid://xpt0juk44kms" path="res://Entity/Animetion/Anime_Totu01.tscn" id="2_jl5xa"]
+[ext_resource type="PackedScene" uid="uid://c645btwynw72h" path="res://Entity/Options/HitBox.tscn" id="3_rgoni"]
+[ext_resource type="PackedScene" uid="uid://bkhm6i521vcuw" path="res://Entity/Options/HitBodySender.tscn" id="4_828ym"]
+[ext_resource type="PackedScene" uid="uid://qj6efmm5fvff" path="res://Entity/Options/ShotPoints.tscn" id="5_eqmyy"]
+[ext_resource type="PackedScene" uid="uid://768y85c8mrew" path="res://Entity/Options/TriggerController.tscn" id="6_neqhm"]
+[ext_resource type="PackedScene" uid="uid://cfg71m3m3vs5u" path="res://Entity/Options/ShotStop_MoveController.tscn" id="7_2i5yo"]
+[ext_resource type="PackedScene" uid="uid://bi3y2rmb1k88t" path="res://Entity/Options/ShotStop_ChaseController.tscn" id="8_dpeaf"]
+[ext_resource type="PackedScene" uid="uid://cyyt77pvlq5p6" path="res://Entity/Options/FireController.tscn" id="9_34608"]
+[ext_resource type="PackedScene" uid="uid://cxml582ud0jrx" path="res://Entity/Options/WeaponTrigger_with_Ray.tscn" id="10_bj0a7"]
+[ext_resource type="PackedScene" uid="uid://bn6v7n8wrfep4" path="res://Entity/Options/DropController.tscn" id="11_4p2u6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e2v8"]
+size = Vector2(96.0001, 96.0001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx62e"]
+size = Vector2(32, 32)
+
+[node name="EnemyTotu01" type="Node2D"]
+script = ExtResource("1_4qnrr")
+speed = 180.0
+
+[node name="Anime_Totu01" parent="." instance=ExtResource("2_jl5xa")]
+
+[node name="HitBox" parent="Anime_Totu01" instance=ExtResource("3_rgoni")]
+scale = Vector2(0.333333, 0.333333)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anime_Totu01/HitBox"]
+position = Vector2(1.78814e-07, -9.53678e-07)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1e2v8")
+
+[node name="HitBodySender" parent="Anime_Totu01" instance=ExtResource("4_828ym")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anime_Totu01/HitBodySender"]
+shape = SubResource("RectangleShape2D_hx62e")
+
+[node name="ShotPoints" parent="." instance=ExtResource("5_eqmyy")]
+
+[node name="TriggerController" parent="." instance=ExtResource("6_neqhm")]
+
+[node name="ShotStop_MoveController" parent="." instance=ExtResource("7_2i5yo")]
+
+[node name="ShotStop_ChaseController" parent="." instance=ExtResource("8_dpeaf")]
+target_in_radius = 9999.0
+turn_speed = 20.0
+to_face = true
+
+[node name="FireController" parent="." node_paths=PackedStringArray("triggerbase") instance=ExtResource("9_34608")]
+triggerbase = NodePath("../TriggerController")
+
+[node name="WeaponTrigger_with_Ray" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("10_bj0a7")]
+ray_range = 600.0
+shotpoints = NodePath("../../ShotPoints")
+bullet_name = "enemy_laser01"
+cooltime = 2.5
+shot_after_hold = true
+
+[node name="DropController" parent="." instance=ExtResource("11_4p2u6")]
