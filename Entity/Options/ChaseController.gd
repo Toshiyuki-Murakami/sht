@@ -74,7 +74,7 @@ func homing(_delta:float):
 	if !Game.is_active(actor.target_actor):
 		is_chase = false
 		return false
-	var to_target:Vector2 = (actor.target_actor.global_position - actor.global_position).normalized()
+	var to_target:Vector2 = (get_target_position() - actor.global_position).normalized()
 	var current_direction = Vector2.RIGHT.rotated(actor.velocity.angle())	
 
 	var new_direction:Vector2 = current_direction.lerp(to_target, turn_speed * _delta).normalized()
@@ -86,3 +86,7 @@ func is_in_fov(origin: Vector2, forward_angle: float, target: Vector2, _fov: flo
 	var dir := (target - origin).normalized()
 	var angle := dir.angle()
 	return abs(wrapf(angle - forward_angle, -PI, PI)) <= _fov * 0.5
+
+
+func get_target_position():
+	return actor.target_actor.global_position

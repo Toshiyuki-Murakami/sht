@@ -47,7 +47,7 @@ shape = SubResource("RectangleShape2D_hx62e")
 
 [node name="ShotStop_ChaseController" parent="." instance=ExtResource("8_dpeaf")]
 target_in_radius = 9999.0
-turn_speed = 20.0
+turn_speed = 40.0
 to_face = true
 
 [node name="FireController" parent="." node_paths=PackedStringArray("triggerbase") instance=ExtResource("9_34608")]
