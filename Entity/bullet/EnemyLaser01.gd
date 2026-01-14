@@ -11,6 +11,9 @@ var point_index:int = 0
 var collision_timer:float = 0.0
 
 func _process(_delta: float) -> void:
+	if !owner_actor.active:
+		deactivate()
+		return
 	is_life(_delta)
 	global_position = shotpoints.get_points(point_index)
 	## 予告線分待つ
