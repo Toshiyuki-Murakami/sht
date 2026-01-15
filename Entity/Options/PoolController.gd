@@ -71,7 +71,7 @@ class_name pool_base
 	
 	'exp_ball': {
 		'key_name': 'exp_ball',
-		'size': 500,
+		'size': 1500,
 	}
 }
 

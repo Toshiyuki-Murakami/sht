@@ -17,7 +17,7 @@ var is_chase:bool = false
 func _process(_delta: float) -> void:
 	if check_target():
 		homing(_delta)
-	face()
+	face(_delta)
 
 func _on_change_state(_state:actor_base.STATE):
 	if _state == actor_base.STATE.MOVE:
@@ -38,7 +38,7 @@ func init_entity():
 	is_chase = false
 	actor.target_actor = null
 
-func face():
+func face(_delta:float):
 	if to_face:
 		var _angle:float = actor.velocity.angle()
 		actor.rotation = _angle
@@ -74,13 +74,24 @@ func homing(_delta:float):
 	if !Game.is_active(actor.target_actor):
 		is_chase = false
 		return false
-	var to_target:Vector2 = (get_target_position() - actor.global_position).normalized()
-	var current_direction = Vector2.RIGHT.rotated(actor.velocity.angle())	
-
-	var new_direction:Vector2 = current_direction.lerp(to_target, turn_speed * _delta).normalized()
+		
+	#var to_target:Vector2 = (get_target_position() - actor.global_position).normalized()
+	#var current_direction = Vector2.RIGHT.rotated(actor.velocity.angle())	
+	#
+	#var new_direction:Vector2 = current_direction.lerp(to_target, turn_speed * _delta).normalized()
+	var new_direction:Vector2 = get_lerp_direction(actor.global_position, get_target_position(), actor.velocity, turn_speed, _delta)
 	actor.velocity = new_direction * actor.speed	
 	
 	return true
+
+
+
+func get_lerp_direction(from_pos:Vector2, to_pos:Vector2, _cur_dir:Vector2, _turn_speed:float, _delta:float):
+	var to_target:Vector2 = (to_pos - from_pos).normalized()
+	var current_direction = Vector2.RIGHT.rotated(_cur_dir.angle())	
+
+	return current_direction.lerp(to_target, _turn_speed * _delta).normalized()
+
 	
 func is_in_fov(origin: Vector2, forward_angle: float, target: Vector2, _fov: float) -> bool:
 	var dir := (target - origin).normalized()
