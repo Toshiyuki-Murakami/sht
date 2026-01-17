@@ -32,15 +32,12 @@ func _process(_delta: float) -> void:
 		timer = 0.0
 		for _node in hit_targets:
 			if _node.receive_hit(damage):
-				prints('[prcess]', _node.global_position)
-				#effect(_node.global_position)
 				_node.add_effect.emit(effect_hit)
 
 func _on_area_entered(_area:Area2D):
 	if _area is hitbox:
 		if _area.actor.receive_hit(damage):
 			_area.actor.add_effect.emit(effect_hit)
-			#effect(_area.actor.global_position)
 		
 		hit_targets.append(_area.actor)
 		if is_continuous:

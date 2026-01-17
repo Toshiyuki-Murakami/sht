@@ -15,6 +15,7 @@ var Resources:Dictionary = {
 	'enemy_bullet02': preload("res://Entity/bullet/EnemyBullrt02.tscn").instantiate(),
 	'laser01': preload("res://Entity/bullet/Laser01.tscn").instantiate(),
 	'missile01': preload("res://Entity/bullet/Missile01.tscn").instantiate(),
+	'phpton_missile01': preload("res://Entity/bullet/PhotonMissile01.tscn").instantiate(),
 	'enemy_laser01': preload("res://Entity/bullet/EnemyLaser01.tscn").instantiate(),
 	
 	## effect
@@ -24,7 +25,9 @@ var Resources:Dictionary = {
 	'effect_circle': preload("res://Entity/Effect/Effect_Circle.tscn").instantiate(),
 	'effect_bullethit': preload("res://Entity/Effect/Effect_BulletHit.tscn").instantiate(),
 	'justguard': preload("res://Entity/Effect/Effect_JustGuard.tscn").instantiate(),
-	
+	'effect_trail': preload("res://Entity/Effect/Effect_Trail.tscn").instantiate(),
+
+
 	## etc
 	'exp_ball': preload("res://Entity/etc/EXP_Ball.tscn").instantiate(),
 }

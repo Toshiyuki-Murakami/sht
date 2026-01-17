@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://by33jhgpig7wv"]
+
+[ext_resource type="Script" path="res://Entity/Options/Accele_ChaseController.gd" id="1_blljh"]
+
+[node name="Accele_ChaseController" type="Node2D"]
+script = ExtResource("1_blljh")
+turn_speed = 10.0
+to_face = true

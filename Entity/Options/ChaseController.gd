@@ -30,6 +30,7 @@ func _on_change_deactivate():
 	is_chase = false
 	actor.target_actor = null
 	actor.velocity = Vector2.ZERO
+	
 
 func init_entity():
 	super()
@@ -37,6 +38,7 @@ func init_entity():
 	## 初期化
 	is_chase = false
 	actor.target_actor = null
+	set_process(false)
 
 func face(_delta:float):
 	if to_face:
@@ -51,7 +53,13 @@ func check_target():
 	var nodes_in_group = get_tree().get_nodes_in_group(target_group)
 	var min_dist:float = 9999.9
 	var min_node:actor_base = null
+	var _damage:float = 0.0
+	if actor is bullet_base:
+		_damage = actor.damage
 	for _node in nodes_in_group:
+		## bullet_baseの場合はダメージ予約ができない場合は対象にいれない
+		if is_booking(_node):
+			continue
 		var _dist:float = actor.global_position.distance_to(_node.global_position)
 		var _angle:float = (_node.global_position - actor.global_position).angle()
 		if _dist <= target_in_radius:
@@ -62,6 +70,7 @@ func check_target():
 					min_node = _node
 	
 	if min_node:
+		add_booking(min_node)
 		is_chase = true
 		actor.target_actor = min_node
 		actor.change_trigger.emit(trigger_base.TRIGGER_TYPES.FIRE, true)
@@ -70,8 +79,23 @@ func check_target():
 	return false
 
 
+func is_booking(_node:actor_base):
+	if actor is bullet_base:
+		if actor.check_booking:
+			if _node.state in [actor_base.STATE.MOVE]:
+				return _node.is_booking_hit()
+			else:
+				return true
+	return false
+
+func add_booking(_node:actor_base):
+	if actor is bullet_base:
+		if actor.check_booking:
+			_node.add_booking_hit(actor.damage)
+
 func homing(_delta:float):
-	if !Game.is_active(actor.target_actor):
+	#if !Game.is_active(actor.target_actor):
+	if !actor.target_actor.active or actor.target_actor.state != actor_base.STATE.MOVE:
 		is_chase = false
 		return false
 		

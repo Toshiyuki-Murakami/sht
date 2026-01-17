@@ -27,7 +27,9 @@ func _on_change_state(_state: actor_base.STATE):
 	elif _state == actor_base.STATE.MOVE:
 		if start_animation != '':
 			animation_player.play(start_animation)	
-
+	elif _state == actor_base.STATE.POOL:
+		animation_player.stop()
+	
 func _on_animation_finish(_action_name:String):
 	if _action_name == 'create':
 		actor.state = actor.STATE.MOVE

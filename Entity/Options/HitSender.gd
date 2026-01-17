@@ -53,7 +53,7 @@ func _on_area_exited(_area:Area2D):
 		set_process(false)
 
 func _on_change_activate(_data:Dictionary):
-	#collshape.disabled = false
+	damage = actor.damage
 	pass
 
 func _on_change_deactivate():

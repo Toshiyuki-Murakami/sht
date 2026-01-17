@@ -33,12 +33,18 @@ var state:STATE = STATE.POOL:
 ## 向きをホールド
 var hold:bool = false
 
+## HPを保持
+var save_hp:float = 1
+
+var booking_damage:float = 0.0
+
 ## ターゲット情報
 var target_actor:actor_base
 ## ポイント履歴
 var points_log:Array = []
 
 func _ready() -> void:
+	save_hp = hp
 	base_name = 'actor'
 	add_effect.connect(_on_add_effect)
 	super()
@@ -54,11 +60,20 @@ func calc_hp(_value:float):
 func activate(_data:Dictionary = {}):
 	super(_data)
 	change_activate.emit(_data)
+	hp = save_hp
+	booking_damage = 0.0
 	
 func deactivate():
 	super()
 	target_actor = null
 	change_deactivate.emit()
+	booking_damage = 0.0
+
+func is_booking_hit():
+	return hp - booking_damage <= 0.0
+
+func add_booking_hit(_damage:float):
+	booking_damage += _damage
 
 func receive_hit(_damage:float):
 	var ret:bool = calc_hp(_damage)

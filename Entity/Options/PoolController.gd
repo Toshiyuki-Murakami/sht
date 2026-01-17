@@ -43,6 +43,10 @@ class_name pool_base
 		'key_name': 'missile01',
 		'size': 50,
 	},
+	'phpton_missile01': {
+		'key_name': 'phpton_missile01',
+		'size': 50,
+	},
 	'enemy_laser01': {
 		'key_name': 'enemy_laser01',
 		'size': 20,
@@ -68,6 +72,10 @@ class_name pool_base
 		'key_name': 'justguard',
 		'size': 5,
 	},
+	'effect_trail': {
+		'key_name': 'effect_trail',
+		'size': 50,
+	},	
 	
 	'exp_ball': {
 		'key_name': 'exp_ball',

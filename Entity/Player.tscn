@@ -29,6 +29,16 @@ death_effect = "effect_playerdeath"
 [node name="ShotPoints" parent="." instance=ExtResource("6_gj85q")]
 to_target_face = true
 
+[node name="ShotPoints_left" parent="." instance=ExtResource("6_gj85q")]
+rotation = -1.5708
+to_target_face = true
+add_rotation = -90.0
+
+[node name="ShotPoints_right" parent="." instance=ExtResource("6_gj85q")]
+rotation = 1.5708
+to_target_face = true
+add_rotation = 90.0
+
 [node name="Anime_Square" parent="." instance=ExtResource("4_jrnut")]
 
 [node name="HitBox" parent="Anime_Square" instance=ExtResource("5_xkbsa")]
@@ -45,6 +55,12 @@ shotpoints = NodePath("../../ShotPoints")
 cooltime = 0.1
 use_burst = true
 multi = 3
+
+[node name="WeaponTrigger_missile" parent="FireController" node_paths=PackedStringArray("shotpoints") instance=ExtResource("7_mda3a")]
+shotpoints = NodePath("../../ShotPoints_left")
+bullet_name = "phpton_missile01"
+multi = 3
+multi_span = 10.0
 
 [node name="TraceGenerator" parent="." instance=ExtResource("10_gxkk0")]
 log_count = 500

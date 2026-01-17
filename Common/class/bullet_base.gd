@@ -3,8 +3,12 @@ class_name bullet_base
 
 ## ベースイメージ
 @export var image_base:actor_animation
+## ダメージ
+@export var damage:float = 1.0
 ## ヒット回数
 @export var hit_count:int = 1
+## ロックオン重複チェック
+@export var check_booking:bool = false
 ## 最大射程
 @export var max_range:float = 3000.0
 ## 生存時間
@@ -24,7 +28,7 @@ func _ready() -> void:
 	save_hit_count = hit_count
 	set_process(false)
 	super()
-	activate()
+	#activate()
 
 func _process(_delta: float) -> void:
 	is_life(_delta)

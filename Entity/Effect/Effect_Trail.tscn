@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6a8oo2d155w3"]
+
+[ext_resource type="Script" path="res://Entity/Effect/Effect_Trail.gd" id="1_qouwo"]
+
+[sub_resource type="Gradient" id="Gradient_wqpkf"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Effect_Trail" type="Node2D"]
+script = ExtResource("1_qouwo")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(129, 73, 289, 52)
+width = 2.0
+gradient = SubResource("Gradient_wqpkf")

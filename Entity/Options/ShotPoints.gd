@@ -11,12 +11,19 @@ class_name shot_points
 @export var multi_span:float = 12
 
 @export var to_target_face:bool = false
+## 位置変更
+@export var add_rotation:float = 0.0
 
 var points:Array = []
+
+## 加算angle(RAD)
+var add_rotation_rad:float = 0.0
 
 func _ready() -> void:
 	## 中心点からの距離設定
 	points_list.position.x = start_range
+	
+	add_rotation_rad = deg_to_rad(add_rotation)
 	##　リスト作成
 	var i:int = 0
 	for _node in points_list.get_children():
@@ -29,7 +36,7 @@ func _process(_delta: float) -> void:
 	if to_target_face:
 		if actor.target_actor:
 			if !actor.hold:
-				rotation = (actor.target_actor.global_position - actor.global_position).angle()
+				rotation = (actor.target_actor.global_position - actor.global_position).angle() + add_rotation_rad
 
 func set_multi(_value:int, _span:float):
 	multi = _value

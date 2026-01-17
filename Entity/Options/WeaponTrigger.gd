@@ -63,14 +63,14 @@ func trigger():
 	if !Game.is_active(actor.target_actor):
 		return
 	shotpoints.set_multi(multi, multi_span)
-	var dir:Vector2 = (actor.target_actor.global_position - actor.global_position).normalized()
+	var _dir:Vector2 = (actor.target_actor.global_position - actor.global_position).normalized()
 	for i in multi:
 		## ここが将来的にPOOLから取得する
 		var _bullet:bullet_base = Game.poolbase.get_entity(bullet_name)
 		if _bullet:
 			_bullet.activate({
 				'start_position': shotpoints.get_points(i),
-				'direction': calc_direction(i, dir),
+				'direction': get_direction(shotpoints.get_points(i), actor.global_position),
 				'owner_actor': actor,
 				'shot_points': shotpoints,
 				'point_index': i,
@@ -79,6 +79,10 @@ func trigger():
 		if shot_after_hold:
 			actor.hold = true
 		reset_timer()
+
+func get_direction(_from:Vector2, _to:Vector2):
+	return Vector2(_from - _to).normalized()
+
 
 func calc_direction(_idx:int, _dir:Vector2):
 	var center:float = float(multi) / 2 - 0.5
