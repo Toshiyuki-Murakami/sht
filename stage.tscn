@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://co8siajjum86w"]
+[gd_scene load_steps=14 format=3 uid="uid://co8siajjum86w"]
 
 [ext_resource type="Script" path="res://Stage.gd" id="1_6v6m1"]
 [ext_resource type="PackedScene" uid="uid://ceyc4bi5wldg0" path="res://Entity/Player.tscn" id="2_han3a"]
+[ext_resource type="PackedScene" uid="uid://b8xsxgxvt25i" path="res://Entity/Effect/Effect_Charge.tscn" id="4_j4lf6"]
 [ext_resource type="PackedScene" uid="uid://dtixefuhc4tsd" path="res://Scene/options/Main_Camera.tscn" id="4_uifhw"]
 [ext_resource type="PackedScene" uid="uid://f6w3fnbjtkey" path="res://Entity/Options/PoolController.tscn" id="5_eck0q"]
 [ext_resource type="PackedScene" uid="uid://ccdoluqc3tsv1" path="res://Entity/TargetMarker.tscn" id="6_gr45d"]
@@ -47,6 +48,9 @@ position = Vector2(960, 960)
 marker = NodePath("../../TargetMarker")
 
 [node name="MainCamera" parent="entity/Player" instance=ExtResource("4_uifhw")]
+
+[node name="Effect_Charge" parent="entity" node_paths=PackedStringArray("actor") instance=ExtResource("4_j4lf6")]
+actor = NodePath("../Player")
 
 [node name="PoolController" parent="." instance=ExtResource("5_eck0q")]
 

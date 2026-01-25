@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8xsxgxvt25i"]
+
+[ext_resource type="Script" path="res://Entity/Effect/Effect_Charge.gd" id="1_qs502"]
+
+[sub_resource type="Curve" id="Curve_8ns1r"]
+_data = [Vector2(0, 0.021978), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.582418), 0.0, 0.0, 0, 0, Vector2(0.311881, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_y31x6"]
+curve = SubResource("Curve_8ns1r")
+
+[sub_resource type="Curve" id="Curve_llotw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.67033), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h2x1p"]
+curve = SubResource("Curve_llotw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81k55"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 0.0
+inherit_velocity_ratio = 150.0
+direction = Vector3(0, 0, 0)
+spread = 150.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -300.0
+radial_accel_max = -200.0
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_h2x1p")
+alpha_curve = SubResource("CurveTexture_y31x6")
+
+[node name="Effect_Charge" type="GPUParticles2D"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_81k55")
+lifetime = 0.5
+fixed_fps = 60
+script = ExtResource("1_qs502")
