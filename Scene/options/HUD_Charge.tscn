@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://p5kv56myopyt"]
+
+[ext_resource type="Script" path="res://Scene/options/HUD_Charge.gd" id="1_r1jx4"]
+
+[node name="HUD_Charge" type="VBoxContainer"]
+offset_right = 211.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+script = ExtResource("1_r1jx4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CHARGE Lv.1"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="now" type="Label" parent="HBox"]
+layout_mode = 2
+text = "0.0"
+
+[node name="Label" type="Label" parent="HBox"]
+layout_mode = 2
+text = "/"
+
+[node name="max" type="Label" parent="HBox"]
+layout_mode = 2
+text = "3.0"

@@ -28,6 +28,12 @@ func _process(_delta: float) -> void:
 func input_process(_delta:float):
 	## 発射ボタン判定
 	fire_trigger = Input.is_action_pressed(fire_button)
+	if Input.is_action_just_pressed(fire_button):
+		print('shot_charge emit')
+		Signals.shot_charge.emit()
+	if Input.is_action_just_released(fire_button):
+		print('start_charge emit')
+		Signals.start_charge.emit()
 	
 	if Input.is_action_just_pressed('game_shield'):
 		just_change_trigger.emit(trigger_base.TRIGGER_TYPES.SHIELD, true)
